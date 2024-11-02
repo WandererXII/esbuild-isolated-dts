@@ -1,0 +1,54 @@
+{
+  "name": "esbuild-isolated-dts",
+  "version": "0.1.0",
+  "description": "Generate declarations fast using isolated declarations",
+  "author": "WandererXII",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WandererXII/esbuild-isolated-dts.git"
+  },
+  "type": "module",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "peerDependencies": {
+    "typescript": ">=5.5",
+    "esbuild": "^0.24"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24",
+    "@types/node": "^18",
+    "prettier": "^3",
+    "oxlint": "^0.10",
+    "typescript": "^5.6"
+  },
+  "scripts": {
+    "format": "prettier --cache --write .",
+    "check-format": "prettier --check .",
+    "lint": "oxlint",
+    "build": "tsc"
+  },
+  "keywords": [
+    "typescript",
+    "esbuild",
+    "types",
+    "dts",
+    "declarations",
+    "isolated",
+    "isolatedDeclarations",
+    "plugin"
+  ],
+  "files": [
+    "dist",
+    "src"
+  ]
+}
