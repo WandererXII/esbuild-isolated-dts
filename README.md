@@ -1,6 +1,9 @@
 # esbuild-isolated-dts
 
-Generate declaration files (`.d.ts`) and declaration maps (`.d.ts.map`) much faster than `tsc`.
+[![Continuous Integration](https://github.com/WandererXII/esbuild-isolated-dts/workflows/Continuous%20Integration/badge.svg)](https://github.com/WandererXII/esbuild-isolated-dts/actions?query=workflow%3A%22Continuous+Integration%22)
+[![npm](https://img.shields.io/npm/v/esbuild-isolated-dts)](https://www.npmjs.com/package/esbuild-isolated-dts)
+
+⚡ Generate declaration files (`.d.ts`) and declaration maps (`.d.ts.map`) much faster than `tsc`.
 
 ## Prerequisites
 
