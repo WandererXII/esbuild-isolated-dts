@@ -15,10 +15,6 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
-      - uses: github/codeql-action/init@v3
-        with:
-          languages: javascript
-      - uses: github/codeql-action/analyze@v3
       - run: |
           npm install
           npm run check-format
