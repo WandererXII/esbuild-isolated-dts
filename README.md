@@ -9,8 +9,9 @@
 
 Your project must meet these requirements:
 
-1. Have `isolatedDeclarations` set to true in `tsconfig.json`
-2. Follow the isolated [declarations pattern](https://www.typescriptlang.org/tsconfig/#isolatedDeclarations).
+1. Have typescript 5.5+ installed.
+2. Have `isolatedDeclarations` set to true in `tsconfig.json`.
+3. Follow the isolated [declarations rule](https://www.typescriptlang.org/tsconfig/#isolatedDeclarations).
 
 ## Install
 
