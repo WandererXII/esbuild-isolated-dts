@@ -7,9 +7,12 @@ export interface Options {
   logLevel?: 'debug' | 'silent';
   dryRun?: boolean;
   transpileOptions?: TranspileOptions;
+  exts?: string[];
 }
 
-export type OptionsI = Required<Omit<Options, 'transpileOptions' | 'outdir' | 'outfile'>> & {
+export type OptionsI = Required<
+  Omit<Options, 'transpileOptions' | 'outdir' | 'outfile' | 'exts'>
+> & {
   transpileOptions: TranspileOptionsI;
   outfile: string | undefined;
   write: boolean;
@@ -20,6 +23,8 @@ export type TranspileOptionsI = Omit<TranspileOptions, 'compilerOptions'> & {
 };
 export type CompilerOptionsI = CompilerOptions &
   Required<Pick<CompilerOptions, 'declarationMap' | 'outDir' | 'rootDir'>>;
+
+export const defaultExts: string[] = ['ts', 'tsx'] as const;
 
 export function initializeOptions(
   opts: Options | undefined,

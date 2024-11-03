@@ -82,6 +82,13 @@ await esbuild.build({
 
 Note: `rootDir` and `outDir` can't be directly modified, because these fields are necessary for correct declaration map output.
 
+### exts
+
+- Type: `string[]`
+- Default: `['ts', 'tsx']`
+
+Generate declarations only for files with the extension in `exts`.
+
 ### dryRun
 
 - Type: `boolean`

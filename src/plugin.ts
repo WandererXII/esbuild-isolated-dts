@@ -1,5 +1,5 @@
 import type { PluginBuild } from 'esbuild';
-import { initializeOptions, type Options } from './options.js';
+import { defaultExts, initializeOptions, type Options } from './options.js';
 import { transpileDeclaration } from './transpiler.js';
 
 export function isoldatedDtsPlugin(opts?: Options) {
@@ -8,9 +8,10 @@ export function isoldatedDtsPlugin(opts?: Options) {
     name: 'esbuild-isolated-dts',
     setup(build: PluginBuild): void {
       const filePaths: string[] = [],
-        buildOpts = build.initialOptions;
-
-      build.onLoad({ filter: /\.ts$/ }, async args => {
+        buildOpts = build.initialOptions,
+        exts = opts.exts || defaultExts,
+        filter = new RegExp(`\\.(${exts.join('|')})$`);
+      build.onLoad({ filter }, async args => {
         filePaths.push(args.path);
         return {};
       });
