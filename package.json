@@ -22,7 +22,7 @@
   },
   "peerDependencies": {
     "typescript": ">=5.5",
-    "esbuild": "^0.24"
+    "esbuild": "0.x.x"
   },
   "devDependencies": {
     "esbuild": "^0.24",
