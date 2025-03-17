@@ -8,7 +8,7 @@ import type { OptionsI } from './options.js';
 export async function transpileDeclaration(
   filePath: string,
   opts: OptionsI,
-  result: BuildResult
+  result: BuildResult,
 ): Promise<OnEndResult> {
   const code = await fs.readFile(filePath, { encoding: 'utf-8' });
 
@@ -20,18 +20,18 @@ export async function transpileDeclaration(
     });
 
   const errors = diagnostics
-    ?.filter(d => d.category === ts.DiagnosticCategory.Error)
-    .map(d => diagnosticToPartialMessage(d));
+    ?.filter((d) => d.category === ts.DiagnosticCategory.Error)
+    .map((d) => diagnosticToPartialMessage(d));
   const warnings = diagnostics
-    ?.filter(d => d.category === ts.DiagnosticCategory.Warning)
-    .map(d => diagnosticToPartialMessage(d));
+    ?.filter((d) => d.category === ts.DiagnosticCategory.Warning)
+    .map((d) => diagnosticToPartialMessage(d));
 
   const fileRelative = path.relative(compOpts.rootDir, filePath),
     parsedFile = path.parse(fileRelative),
     outDecFilePath = path.join(
       compOpts.outDir,
       parsedFile.dir,
-      `${opts.outfile ? path.parse(opts.outfile).name : parsedFile.name}.d${parsedFile.ext}`
+      `${opts.outfile ? path.parse(opts.outfile).name : parsedFile.name}.d${parsedFile.ext}`,
     ),
     outMapFilePath = `${outDecFilePath}.map`;
 
@@ -44,7 +44,7 @@ export async function transpileDeclaration(
       '\nDeclaration output path:',
       outDecFilePath,
       '\nMap output path',
-      outMapFilePath
+      outMapFilePath,
     );
   }
 

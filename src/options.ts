@@ -29,7 +29,7 @@ export const defaultExts: string[] = ['ts', 'tsx'] as const;
 export function initializeOptions(
   opts: Options | undefined,
   buildOpts: BuildOptions,
-  filePaths: string[]
+  filePaths: string[],
 ): OptionsI {
   const optsI = {
     outfile: filePaths.length === 1 ? buildOpts.outfile : undefined,
@@ -46,14 +46,14 @@ export function initializeOptions(
 function initializeTranspileOptions(
   opts: Options | undefined,
   buildOpts: BuildOptions,
-  filePaths: string[]
+  filePaths: string[],
 ): TranspileOptionsI {
   const tOpts = opts?.transpileOptions || {};
   tOpts.compilerOptions = tOpts.compilerOptions || {};
 
   const outDir = resolveOutDir(
       opts?.outdir || buildOpts.outdir,
-      filePaths.length === 1 ? buildOpts.outfile : undefined
+      filePaths.length === 1 ? buildOpts.outfile : undefined,
     ),
     rootDir = resolveRootDir(filePaths, buildOpts.outbase),
     declarationMap = tOpts.compilerOptions.declarationMap ?? true,

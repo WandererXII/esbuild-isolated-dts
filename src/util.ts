@@ -27,7 +27,7 @@ export function resolveOutDir(outdir: string | undefined, outfile: string | unde
 }
 
 export function resolveRootDir(filePaths: string[], outbase: string | undefined): string {
-  filePaths = filePaths.map(fp => assureAbsolute(path.dirname(fp)));
+  filePaths = filePaths.map((fp) => assureAbsolute(path.dirname(fp)));
   if (outbase) {
     outbase = assureAbsolute(outbase);
     filePaths = filePaths.concat([outbase]);
@@ -35,9 +35,11 @@ export function resolveRootDir(filePaths: string[], outbase: string | undefined)
 
   if (filePaths.length === 0) return process.cwd();
 
-  const splitPaths = filePaths.map(fp => fp.split(path.sep));
+  const splitPaths = filePaths.map((fp) => fp.split(path.sep));
 
-  const commonPath = splitPaths[0].filter((segment, i) => splitPaths.every(p => p[i] === segment));
+  const commonPath = splitPaths[0].filter((segment, i) =>
+    splitPaths.every((p) => p[i] === segment),
+  );
 
   return commonPath.join(path.sep);
 }

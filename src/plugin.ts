@@ -11,20 +11,20 @@ export function isoldatedDtsPlugin(opts?: Options) {
         buildOpts = build.initialOptions,
         exts = opts.exts || defaultExts,
         filter = new RegExp(`\\.(${exts.join('|')})$`);
-      build.onLoad({ filter }, async args => {
+      build.onLoad({ filter }, async (args) => {
         filePaths.push(args.path);
         return {};
       });
 
-      build.onEnd(async result => {
+      build.onEnd(async (result) => {
         const optsI = initializeOptions(opts, buildOpts, filePaths),
           diagnostics = await Promise.all(
-            filePaths.map(fp => transpileDeclaration(fp, optsI, result))
+            filePaths.map((fp) => transpileDeclaration(fp, optsI, result)),
           );
 
         return {
-          errors: diagnostics.flatMap(d => d.errors || []),
-          warnings: diagnostics.flatMap(d => d.warnings || []),
+          errors: diagnostics.flatMap((d) => d.errors || []),
+          warnings: diagnostics.flatMap((d) => d.warnings || []),
         };
       });
     },
